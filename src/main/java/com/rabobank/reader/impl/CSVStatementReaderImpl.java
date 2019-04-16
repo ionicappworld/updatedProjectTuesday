@@ -15,7 +15,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.rabobank.controller.StatementProcessorController;
+import com.rabobank.controller.StatementController;
 import com.rabobank.domain.Record;
 import com.rabobank.domain.Records;
 import com.rabobank.reader.StatementReader;
@@ -24,7 +24,7 @@ import com.rabobank.reader.StatementReader;
 @Qualifier("csvreader")
 public class CSVStatementReaderImpl implements StatementReader<Records> {
 
-	private static final Logger logger = LoggerFactory.getLogger(StatementProcessorController.class);
+	private static final Logger logger = LoggerFactory.getLogger(StatementController.class);
 
 	@Override
 	public Records readStatement(MultipartFile file) {

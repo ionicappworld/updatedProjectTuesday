@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import com.opencsv.CSVWriter;
 import com.opencsv.bean.StatefulBeanToCsv;
 import com.opencsv.bean.StatefulBeanToCsvBuilder;
-import com.rabobank.controller.StatementProcessorController;
+import com.rabobank.controller.StatementController;
 import com.rabobank.domain.CustomerStatements;
 import com.rabobank.services.CustomerStatementService;
 import com.rabobank.writer.StatementWriter;
@@ -19,7 +19,7 @@ import com.rabobank.writer.StatementWriter;
 @Component(value = "csvwriter")
 public class CSVStatementWriterImpl implements StatementWriter {
 
-	private static final Logger logger = LoggerFactory.getLogger(StatementProcessorController.class);
+	private static final Logger logger = LoggerFactory.getLogger(StatementController.class);
 
 	@Autowired
 	CustomerStatementService customerStatementService;

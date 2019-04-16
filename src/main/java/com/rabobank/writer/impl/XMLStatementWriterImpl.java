@@ -18,7 +18,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
 import org.springframework.util.FileCopyUtils;
 
-import com.rabobank.controller.StatementProcessorController;
+import com.rabobank.controller.StatementController;
 import com.rabobank.domain.Record;
 import com.rabobank.domain.Records;
 import com.rabobank.services.CustomerStatementService;
@@ -27,7 +27,7 @@ import com.rabobank.writer.StatementWriter;
 @Component(value = "xmlwriter")
 
 public class XMLStatementWriterImpl implements StatementWriter {
-	private static final Logger logger = LoggerFactory.getLogger(StatementProcessorController.class);
+	private static final Logger logger = LoggerFactory.getLogger(StatementController.class);
 
 	@Autowired
 	CustomerStatementService customerStatementService;

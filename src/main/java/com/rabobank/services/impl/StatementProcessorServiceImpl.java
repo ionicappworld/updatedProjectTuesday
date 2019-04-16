@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.rabobank.controller.StatementProcessorController;
+import com.rabobank.controller.StatementController;
 import com.rabobank.domain.CustomerStatements;
 import com.rabobank.domain.Records;
 import com.rabobank.factory.StatementFactory;
@@ -18,7 +18,7 @@ import com.rabobank.validator.CustomerStatementValidator;
 @Service
 public class StatementProcessorServiceImpl implements StatementProcessorService {
 
-	private static final Logger logger = LoggerFactory.getLogger(StatementProcessorController.class);
+	private static final Logger logger = LoggerFactory.getLogger(StatementController.class);
 
 	@Autowired
 	StatementFactory statementFactory;

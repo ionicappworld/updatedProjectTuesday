@@ -40,7 +40,7 @@ public class StatementProcessorControllerTest {
 
 	@Spy
 	@InjectMocks
-	private StatementProcessorController controller = new StatementProcessorController();
+	private StatementController controller = new StatementController();
 
 	@Before
 	public void init() {
