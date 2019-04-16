@@ -11,7 +11,7 @@ import com.rabobank.controller.StatementController;
 import com.rabobank.domain.CustomerStatements;
 import com.rabobank.domain.Records;
 import com.rabobank.factory.StatementFactory;
-import com.rabobank.services.CustomerStatementService;
+import com.rabobank.repository.CustomerStatementsRepository;
 import com.rabobank.services.ValidationService;
 import com.rabobank.services.StatementProcessorService;
 
@@ -27,7 +27,7 @@ public class StatementProcessorServiceImpl implements StatementProcessorService 
 	ValidationService validationService;
 
 	@Autowired
-	CustomerStatementService customerStatementService;
+	CustomerStatementsRepository customerStatementsRepository;
 
 	@Override
 	public void process(MultipartFile file) {
@@ -44,7 +44,7 @@ public class StatementProcessorServiceImpl implements StatementProcessorService 
 
 				BeanUtils.copyProperties(record, statments);
 
-				customerStatementService.saveRecord(statments);
+				customerStatementsRepository.save(statments);
 
 			});
 		} catch (Exception e) {

@@ -13,7 +13,7 @@ import com.opencsv.bean.StatefulBeanToCsv;
 import com.opencsv.bean.StatefulBeanToCsvBuilder;
 import com.rabobank.controller.StatementController;
 import com.rabobank.domain.CustomerStatements;
-import com.rabobank.services.CustomerStatementService;
+import com.rabobank.repository.CustomerStatementsRepository;
 import com.rabobank.writer.StatementWriter;
 
 @Component(value = "csvwriter")
@@ -22,7 +22,7 @@ public class CSVStatementWriterImpl implements StatementWriter {
 	private static final Logger logger = LoggerFactory.getLogger(StatementController.class);
 
 	@Autowired
-	CustomerStatementService customerStatementService;
+	CustomerStatementsRepository customerStatementsRepository;
 
 	@Override
 	public void writeOutputReport(HttpServletResponse response) {
@@ -35,7 +35,7 @@ public class CSVStatementWriterImpl implements StatementWriter {
 			StatefulBeanToCsv<CustomerStatements> writer = new StatefulBeanToCsvBuilder<CustomerStatements>(
 					response.getWriter()).withQuotechar(CSVWriter.NO_QUOTE_CHARACTER)
 							.withSeparator(CSVWriter.DEFAULT_SEPARATOR).withOrderedResults(false).build();
-			writer.write(customerStatementService.retrieveAllStatements());
+			writer.write(customerStatementsRepository.findAll());
 
 		} catch (Exception e) {
 			logger.error("Excveption on Writing Output", e);

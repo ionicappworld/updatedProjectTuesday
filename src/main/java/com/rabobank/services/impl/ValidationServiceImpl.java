@@ -7,19 +7,19 @@ import org.springframework.stereotype.Component;
 
 import com.rabobank.domain.CustomerStatements;
 import com.rabobank.domain.Record;
-import com.rabobank.services.CustomerStatementService;
+import com.rabobank.repository.CustomerStatementsRepository;
 import com.rabobank.services.ValidationService;
 
 @Component
 public class ValidationServiceImpl implements ValidationService {
 
 	@Autowired
-	CustomerStatementService customerStatementService;
+	CustomerStatementsRepository customerStatementsRepository;
 
 	@Override
 	public boolean validateDuplicate(Record record) {
 		if (record != null) {
-			Optional<CustomerStatements> statement = customerStatementService.findByReference(record.getReference());
+			Optional<CustomerStatements> statement = customerStatementsRepository.findById(record.getReference());
 			record.setIsUniqueStatement(!statement.isPresent());
 			return statement.isPresent();
 		}

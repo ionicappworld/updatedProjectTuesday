@@ -21,7 +21,7 @@ import org.springframework.util.FileCopyUtils;
 import com.rabobank.controller.StatementController;
 import com.rabobank.domain.Record;
 import com.rabobank.domain.Records;
-import com.rabobank.services.CustomerStatementService;
+import com.rabobank.repository.CustomerStatementsRepository;
 import com.rabobank.writer.StatementWriter;
 
 @Component(value = "xmlwriter")
@@ -30,7 +30,7 @@ public class XMLStatementWriterImpl implements StatementWriter {
 	private static final Logger logger = LoggerFactory.getLogger(StatementController.class);
 
 	@Autowired
-	CustomerStatementService customerStatementService;
+	CustomerStatementsRepository customerStatementsRepository;
 
 	@Override
 	public void writeOutputReport(HttpServletResponse response) {
@@ -46,7 +46,7 @@ public class XMLStatementWriterImpl implements StatementWriter {
 			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 			Records records = new Records();
 			List<Record> recordList = new ArrayList<>();
-			customerStatementService.retrieveAllStatements().stream().forEach(statements -> {
+			customerStatementsRepository.findAll().stream().forEach(statements -> {
 
 				Record record = new Record();
 				BeanUtils.copyProperties(statements, record);
