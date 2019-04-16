@@ -1,4 +1,4 @@
-package com.rabobank.service;
+package com.rabobank.services;
 
 import java.math.BigInteger;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.rabobank.persist;
+package com.rabobank.services;
 
 import com.rabobank.domain.Records;
 

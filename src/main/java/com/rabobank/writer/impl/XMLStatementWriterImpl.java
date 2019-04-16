@@ -21,7 +21,7 @@ import org.springframework.util.FileCopyUtils;
 import com.rabobank.controller.StatementProcessorController;
 import com.rabobank.domain.Record;
 import com.rabobank.domain.Records;
-import com.rabobank.service.CustomerStatementService;
+import com.rabobank.services.CustomerStatementService;
 import com.rabobank.writer.StatementWriter;
 
 @Component(value = "xmlwriter")

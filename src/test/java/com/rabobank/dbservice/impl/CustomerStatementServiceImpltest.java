@@ -21,8 +21,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.rabobank.domain.CustomerStatements;
 import com.rabobank.repository.CustomerStatementsRepository;
-import com.rabobank.service.CustomerStatementService;
-import com.rabobank.service.impl.CustomerStatementServiceImpl;
+import com.rabobank.services.CustomerStatementService;
+import com.rabobank.services.impl.CustomerStatementServiceImpl;
 
 @RunWith(SpringRunner.class)
 public class CustomerStatementServiceImpltest {

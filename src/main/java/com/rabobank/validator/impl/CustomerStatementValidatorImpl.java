@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.rabobank.domain.CustomerStatements;
 import com.rabobank.domain.Record;
-import com.rabobank.service.CustomerStatementService;
+import com.rabobank.services.CustomerStatementService;
 import com.rabobank.validator.CustomerStatementValidator;
 
 @Component

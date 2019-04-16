@@ -9,8 +9,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.rabobank.controller.StatementProcessorController;
 import com.rabobank.domain.Records;
 import com.rabobank.factory.StatementFactory;
-import com.rabobank.persist.ValidatedStatementSave;
 import com.rabobank.processor.StatementProcessor;
+import com.rabobank.services.ValidatedStatementSave;
 
 @Service
 public class StatementProcessorImpl implements StatementProcessor {
@@ -26,7 +26,7 @@ public class StatementProcessorImpl implements StatementProcessor {
 	@Override
 	public void processStatement(MultipartFile file) {
 		try {
-			Records statements = statementFactory.getFileReader(file).readStatement(file);
+			Records statements = (Records) statementFactory.getFileReader(file).readStatement(file);
 			validatedStatementSave.validateAndSave(statements);
 		} catch (Exception e) {
 			logger.error(e.getMessage());

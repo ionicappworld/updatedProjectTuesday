@@ -22,7 +22,7 @@ import com.rabobank.reader.StatementReader;
 
 @Component
 @Qualifier("csvreader")
-public class CSVStatementReaderImpl implements StatementReader {
+public class CSVStatementReaderImpl implements StatementReader<Records> {
 
 	private static final Logger logger = LoggerFactory.getLogger(StatementProcessorController.class);
 

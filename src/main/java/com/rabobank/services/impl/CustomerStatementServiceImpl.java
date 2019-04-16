@@ -1,4 +1,4 @@
-package com.rabobank.service.impl;
+package com.rabobank.services.impl;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.rabobank.domain.CustomerStatements;
 import com.rabobank.repository.CustomerStatementsRepository;
-import com.rabobank.service.CustomerStatementService;
+import com.rabobank.services.CustomerStatementService;
 
 @Service
 public class CustomerStatementServiceImpl implements CustomerStatementService {

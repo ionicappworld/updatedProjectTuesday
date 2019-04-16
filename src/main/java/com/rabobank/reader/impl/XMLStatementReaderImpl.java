@@ -16,7 +16,7 @@ import com.rabobank.reader.StatementReader;
 
 @Component
 @Qualifier("xmlreader")
-public class XMLStatementReaderImpl implements StatementReader {
+public class XMLStatementReaderImpl implements StatementReader<Records> {
 	private static final Logger logger = LoggerFactory.getLogger(StatementProcessorController.class);
 
 	@Override

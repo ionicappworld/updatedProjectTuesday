@@ -1,4 +1,4 @@
-package com.rabobank.persist.impl;
+package com.rabobank.services.impl;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 
 import com.rabobank.domain.CustomerStatements;
 import com.rabobank.domain.Records;
-import com.rabobank.persist.ValidatedStatementSave;
-import com.rabobank.service.CustomerStatementService;
+import com.rabobank.services.CustomerStatementService;
+import com.rabobank.services.ValidatedStatementSave;
 import com.rabobank.validator.CustomerStatementValidator;
 
 @Service
