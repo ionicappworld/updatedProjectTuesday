@@ -1,8 +1,8 @@
-package com.rabobank.validator;
+package com.rabobank.services;
 
 import com.rabobank.domain.Record;
 
-public interface CustomerStatementValidator {
+public interface ValidationService {
 
 	public Boolean validateDuplicate(Record record);
 

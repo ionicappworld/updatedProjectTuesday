@@ -12,8 +12,8 @@ import com.rabobank.domain.CustomerStatements;
 import com.rabobank.domain.Records;
 import com.rabobank.factory.StatementFactory;
 import com.rabobank.services.CustomerStatementService;
+import com.rabobank.services.ValidationService;
 import com.rabobank.services.StatementProcessorService;
-import com.rabobank.validator.CustomerStatementValidator;
 
 @Service
 public class StatementProcessorServiceImpl implements StatementProcessorService {
@@ -24,16 +24,17 @@ public class StatementProcessorServiceImpl implements StatementProcessorService 
 	StatementFactory statementFactory;
 
 	@Autowired
-	CustomerStatementValidator customerStatementValidator;
+	ValidationService customerStatementValidator;
 
 	@Autowired
 	CustomerStatementService customerStatementService;
 
 	@Override
 	public void process(MultipartFile file) {
+		
 		try {
 			Records statements = (Records) statementFactory.getFileReader(file).readStatement(file);
-			statements.getChildrecords().stream().forEach(record -> {
+			statements.getRecords().parallelStream().forEach(record -> {
 
 				customerStatementValidator.validateEndBalance(record);
 
