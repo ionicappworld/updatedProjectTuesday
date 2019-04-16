@@ -17,31 +17,25 @@ public class ValidationServiceImpl implements ValidationService {
 	CustomerStatementService customerStatementService;
 
 	@Override
-	public Boolean validateDuplicate(Record record) {
+	public boolean validateDuplicate(Record record) {
 		if (record != null) {
 			Optional<CustomerStatements> statement = customerStatementService.findByReference(record.getReference());
 			record.setIsUniqueStatement(!statement.isPresent());
 			return statement.isPresent();
-		} else {
-			return false;
 		}
+		return false;
 	}
 
 	@Override
-	public Boolean validateEndBalance(Record record) {
-		if (record != null) {
+	public boolean validateEndBalance(Record record) {
 
-			if ((record.getStartBalance().add(record.getMutation())).compareTo(record.getEndBalance()) == 0) {
-				record.setIsValidEndBalance(true);
-				return record.getIsValidEndBalance();
-			} else {
-				record.setIsValidEndBalance(false);
-				return record.getIsValidEndBalance();
-			}
-
-		} else {
-			return false;
+		if (record != null
+				&& record.getStartBalance().add(record.getMutation()).compareTo(record.getEndBalance()) == 0) {
+			record.setIsValidEndBalance(true);
+			return record.getIsValidEndBalance();
 		}
+		return false;
+
 	}
 
 }

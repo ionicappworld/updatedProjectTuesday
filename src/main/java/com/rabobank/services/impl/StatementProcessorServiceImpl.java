@@ -24,7 +24,7 @@ public class StatementProcessorServiceImpl implements StatementProcessorService 
 	StatementFactory statementFactory;
 
 	@Autowired
-	ValidationService customerStatementValidator;
+	ValidationService validationService;
 
 	@Autowired
 	CustomerStatementService customerStatementService;
@@ -36,9 +36,9 @@ public class StatementProcessorServiceImpl implements StatementProcessorService 
 			Records statements = (Records) statementFactory.getFileReader(file).readStatement(file);
 			statements.getRecords().parallelStream().forEach(record -> {
 
-				customerStatementValidator.validateEndBalance(record);
+				validationService.validateEndBalance(record);
 
-				customerStatementValidator.validateDuplicate(record);
+				validationService.validateDuplicate(record);
 
 				CustomerStatements statments = new CustomerStatements();
 

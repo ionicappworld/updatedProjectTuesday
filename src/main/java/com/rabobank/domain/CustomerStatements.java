@@ -14,7 +14,7 @@ public class CustomerStatements {
 
 	@Id
 	@Column(name = "REFERENCE")
-	private BigInteger reference;
+	private Long reference;
 
 	@Column(name = "ACCOUNT_NUMBER")
 	private String accountNumber;
@@ -37,11 +37,11 @@ public class CustomerStatements {
 	@Column(name = "IS_UNIQUE_STATEMENT")
 	private Boolean isUniqueStatement;
 
-	public BigInteger getReference() {
+	public Long getReference() {
 		return reference;
 	}
 
-	public void setReference(BigInteger reference) {
+	public void setReference(Long reference) {
 		this.reference = reference;
 	}
 

@@ -34,7 +34,7 @@ public class CustomerStatementServiceImpl implements CustomerStatementService {
 	}
 
 	@Override
-	public Optional<CustomerStatements> findByReference(BigInteger reference) {
+	public Optional<CustomerStatements> findByReference(Long reference) {
 
 		return customerStatementsRepository.findById(reference);
 	}

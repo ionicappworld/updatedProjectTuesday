@@ -15,6 +15,6 @@ public interface CustomerStatementService {
 
 	public void saveRecord(CustomerStatements customerStatement);
 	
-	public Optional<CustomerStatements> findByReference(BigInteger reference);
+	public Optional<CustomerStatements> findByReference(Long reference);
 
 }

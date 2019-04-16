@@ -37,7 +37,7 @@ public class CSVStatementReaderImpl implements StatementReader<Records> {
 					.parse(new InputStreamReader(file.getInputStream()));
 
 			parser.forEach(record -> {
-				Record customerRecords = new Record(new BigInteger(record.get("Reference")),
+				Record customerRecords = new Record(new Long(record.get("Reference")),
 						record.get("AccountNumber"), record.get("Description"),
 						new BigDecimal(record.get("Start Balance")), new BigDecimal(record.get("Mutation")),
 						new BigDecimal(record.get("End Balance")));

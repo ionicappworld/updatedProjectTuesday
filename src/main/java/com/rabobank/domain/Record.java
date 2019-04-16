@@ -19,16 +19,16 @@ public class Record {
 	 * 
 	 */
 	@XmlAttribute
-	private BigInteger reference;
+	private Long reference;
 	private String accountNumber;
 	private BigDecimal startBalance;
 	private BigDecimal mutation;
 	private String description;
 	private BigDecimal endBalance;
-	private Boolean isValidEndBalance;
+	private boolean isValidEndBalance;
 	private Boolean isUniqueStatement;
 
-	public Record(BigInteger reference, String accountNumber, String description, BigDecimal startBalance,
+	public Record(Long reference, String accountNumber, String description, BigDecimal startBalance,
 			BigDecimal mutation, BigDecimal endBalance) {
 		super();
 		this.reference = reference;
@@ -37,17 +37,19 @@ public class Record {
 		this.mutation = mutation;
 		this.description = description;
 		this.endBalance = endBalance;
+		this.isValidEndBalance = false;
+		this.isUniqueStatement = false;
 
 	}
 
 	public Record() {
 	}
 
-	public BigInteger getReference() {
+	public Long getReference() {
 		return reference;
 	}
 
-	public void setReference(BigInteger reference) {
+	public void setReference(Long reference) {
 		this.reference = reference;
 	}
 
@@ -91,11 +93,11 @@ public class Record {
 		this.endBalance = endBalance;
 	}
 
-	public Boolean getIsValidEndBalance() {
+	public boolean getIsValidEndBalance() {
 		return isValidEndBalance;
 	}
 
-	public void setIsValidEndBalance(Boolean isValidEndBalance) {
+	public void setIsValidEndBalance(boolean isValidEndBalance) {
 		this.isValidEndBalance = isValidEndBalance;
 	}
 
