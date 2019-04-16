@@ -23,7 +23,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.rabobank.factory.StatementFactory;
-import com.rabobank.processor.StatementProcessor;
+import com.rabobank.services.StatementProcessorService;
 
 @RunWith(MockitoJUnitRunner.class)
 public class StatementProcessorControllerTest {
@@ -33,7 +33,7 @@ public class StatementProcessorControllerTest {
 	private static final String TEST_FILE_NAME = "records.csv";
 
 	@Mock
-	StatementProcessor statementProcessor;
+	StatementProcessorService statementProcessor;
 
 	@Spy
 	StatementFactory statementFactory;

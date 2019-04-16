@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.rabobank.factory.StatementFactory;
-import com.rabobank.processor.StatementProcessor;
+import com.rabobank.services.StatementProcessorService;
 
 @RestController
 @RequestMapping("/rabo")
@@ -20,7 +20,7 @@ public class StatementProcessorController {
 	private static final Logger logger = LoggerFactory.getLogger(StatementProcessorController.class);
 
 	@Autowired
-	StatementProcessor statementProcessor;
+	StatementProcessorService statementProcessor;
 
 	@Autowired
 	StatementFactory statementFactory;
@@ -29,7 +29,7 @@ public class StatementProcessorController {
 	public void getValidatedStatement(@RequestParam("files") MultipartFile file, HttpServletResponse response) {
 		if (file != null) {
 			logger.info("Statement Process Starting");
-			statementProcessor.processStatement(file);
+			statementProcessor.process(file);
 			statementFactory.getFileWriter(file).writeOutputReport(response);
 
 		}
