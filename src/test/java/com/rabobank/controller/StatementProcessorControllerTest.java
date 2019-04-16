@@ -1,6 +1,9 @@
 package com.rabobank.controller;
 
+import java.io.File;
 import java.io.InputStream;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -8,6 +11,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.http.MediaType;
@@ -18,7 +22,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.rabobank.factory.StatementFactoryInterface;
+import com.rabobank.factory.StatementFactory;
 import com.rabobank.processor.StatementProcessor;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -31,8 +35,8 @@ public class StatementProcessorControllerTest {
 	@Mock
 	StatementProcessor statementProcessor;
 
-	@Mock
-	StatementFactoryInterface statementFactory;
+	@Spy
+	StatementFactory statementFactory;
 
 	@Spy
 	@InjectMocks
@@ -47,11 +51,20 @@ public class StatementProcessorControllerTest {
 	@SuppressWarnings("deprecation")
 	@Test
 	public void getValidatedStatementTest() throws Exception {
-		MockMultipartFile mockMultipartFile = new MockMultipartFile("file", TEST_FILE_NAME, "multipart/form-data",
+
+		ClassLoader classLoader = getClass().getClassLoader();
+		HttpServletResponse response ;
+		File file = new File(classLoader.getResource("records.csv").getFile());
+		file.getAbsolutePath();
+		System.out.println("checkingfile if exist" + file.getAbsolutePath());
+
+		MockMultipartFile mockMultipartFile = new MockMultipartFile("files", TEST_FILE_NAME, "application/csv",
 				statementStream);
+	
+
 		MvcResult result = mockMvc
-				.perform(MockMvcRequestBuilders.fileUpload("/rabo/getValidatedStatement").file(mockMultipartFile)
-						.contentType(MediaType.APPLICATION_OCTET_STREAM_VALUE))
+				.perform(MockMvcRequestBuilders.multipart("/rabo/getValidatedStatement").file(mockMultipartFile)
+						.contentType(MediaType.MULTIPART_FORM_DATA))
 				.andExpect(MockMvcResultMatchers.status().is(200)).andReturn();
 		Assert.assertEquals(200, result.getResponse().getStatus());
 		Assert.assertNotNull(result.getResponse().getContentAsString());

@@ -2,7 +2,7 @@ package com.rabobank.reader;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.rabobank.dto.Records;
+import com.rabobank.domain.Records;
 
 public interface StatementReader {
 

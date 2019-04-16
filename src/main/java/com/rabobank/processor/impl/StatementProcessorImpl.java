@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.rabobank.controller.StatementProcessorController;
-import com.rabobank.dto.Records;
-import com.rabobank.factory.StatementFactoryInterface;
+import com.rabobank.domain.Records;
+import com.rabobank.factory.StatementFactory;
 import com.rabobank.persist.ValidatedStatementSave;
 import com.rabobank.processor.StatementProcessor;
 
@@ -21,7 +21,7 @@ public class StatementProcessorImpl implements StatementProcessor {
 	ValidatedStatementSave validatedStatementSave;
 
 	@Autowired
-	StatementFactoryInterface statementFactory;
+	StatementFactory statementFactory;
 
 	@Override
 	public void processStatement(MultipartFile file) {

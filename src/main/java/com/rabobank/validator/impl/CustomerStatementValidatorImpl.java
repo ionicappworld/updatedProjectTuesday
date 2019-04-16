@@ -5,9 +5,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.rabobank.dbservice.CustomerStatementService;
-import com.rabobank.dto.Record;
-import com.rabobank.entity.CustomerStatements;
+import com.rabobank.domain.CustomerStatements;
+import com.rabobank.domain.Record;
+import com.rabobank.service.CustomerStatementService;
 import com.rabobank.validator.CustomerStatementValidator;
 
 @Component

@@ -1,6 +1,6 @@
 package com.rabobank.validator;
 
-import com.rabobank.dto.Record;
+import com.rabobank.domain.Record;
 
 public interface CustomerStatementValidator {
 

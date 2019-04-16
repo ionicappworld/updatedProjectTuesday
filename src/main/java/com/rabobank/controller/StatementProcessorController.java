@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.rabobank.factory.StatementFactoryInterface;
+import com.rabobank.factory.StatementFactory;
 import com.rabobank.processor.StatementProcessor;
 
 @RestController
@@ -23,7 +23,7 @@ public class StatementProcessorController {
 	StatementProcessor statementProcessor;
 
 	@Autowired
-	StatementFactoryInterface statementFactory;
+	StatementFactory statementFactory;
 
 	@PostMapping("/getValidatedStatement")
 	public void getValidatedStatement(@RequestParam("files") MultipartFile file, HttpServletResponse response) {

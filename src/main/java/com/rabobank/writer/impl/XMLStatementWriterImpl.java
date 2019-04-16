@@ -19,9 +19,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.FileCopyUtils;
 
 import com.rabobank.controller.StatementProcessorController;
-import com.rabobank.dbservice.CustomerStatementService;
-import com.rabobank.dto.Record;
-import com.rabobank.dto.Records;
+import com.rabobank.domain.Record;
+import com.rabobank.domain.Records;
+import com.rabobank.service.CustomerStatementService;
 import com.rabobank.writer.StatementWriter;
 
 @Component(value = "xmlwriter")

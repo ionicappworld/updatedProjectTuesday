@@ -16,8 +16,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.rabobank.controller.StatementProcessorController;
-import com.rabobank.dto.Record;
-import com.rabobank.dto.Records;
+import com.rabobank.domain.Record;
+import com.rabobank.domain.Records;
 import com.rabobank.reader.StatementReader;
 
 @Component

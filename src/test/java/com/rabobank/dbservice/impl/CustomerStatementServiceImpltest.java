@@ -19,9 +19,10 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.rabobank.db.repository.CustomerStatementsRepository;
-import com.rabobank.dbservice.CustomerStatementService;
-import com.rabobank.entity.CustomerStatements;
+import com.rabobank.domain.CustomerStatements;
+import com.rabobank.repository.CustomerStatementsRepository;
+import com.rabobank.service.CustomerStatementService;
+import com.rabobank.service.impl.CustomerStatementServiceImpl;
 
 @RunWith(SpringRunner.class)
 public class CustomerStatementServiceImpltest {

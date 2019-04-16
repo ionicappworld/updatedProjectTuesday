@@ -1,6 +1,6 @@
 package com.rabobank.persist;
 
-import com.rabobank.dto.Records;
+import com.rabobank.domain.Records;
 
 public interface ValidatedStatementSave {
 	

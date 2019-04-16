@@ -12,8 +12,8 @@ import com.opencsv.CSVWriter;
 import com.opencsv.bean.StatefulBeanToCsv;
 import com.opencsv.bean.StatefulBeanToCsvBuilder;
 import com.rabobank.controller.StatementProcessorController;
-import com.rabobank.dbservice.CustomerStatementService;
-import com.rabobank.entity.CustomerStatements;
+import com.rabobank.domain.CustomerStatements;
+import com.rabobank.service.CustomerStatementService;
 import com.rabobank.writer.StatementWriter;
 
 @Component(value = "csvwriter")
