@@ -53,7 +53,7 @@ public class XMLStatementWriterImpl implements StatementWriter {
 				recordList.add(record);
 
 			});
-			records.setChildrecords(recordList);
+			records.setRecords(recordList);
 			marshaller.marshal(records, sw);
 			FileCopyUtils.copy(sw.toString(), response.getWriter());
 		} catch (IOException | JAXBException e) {

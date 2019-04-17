@@ -10,12 +10,15 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class RaboExceptionHandler extends ResponseEntityExceptionHandler {
 
-	@ExceptionHandler(FileTypeException.class)
-	public ResponseEntity<ErrorResponse> fileTypeUnSupported(Exception ex, WebRequest request) {
-		ErrorResponse error = new ErrorResponse();
-		error.setError("Bad File Format");
-		error.setDescription("UnSupported File Format , File format should be CSV or XML");
-		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+	@ExceptionHandler(FileFormatException.class)
+	public ResponseEntity<Exception> fileTypeUnSupported(Exception ex, WebRequest request) {
+		/*
+		 * ErrorResponse error = new ErrorResponse();
+		 * error.setError("Incorrect File Format"); error.
+		 * setDescription("UnSupported File Format , File format should be CSV or XML"
+		 * );
+		 */
+		return new ResponseEntity<>(ex, HttpStatus.BAD_REQUEST);
 	}
 
 }

@@ -2,14 +2,14 @@ package com.rabobank.exception;
 
 import com.rabobank.enums.StatementFileType;
 
-public class FileTypeException extends RuntimeException {
+public class FileFormatException extends RuntimeException {
 
     /**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public FileTypeException(StatementFileType fileType) {
+	public FileFormatException(StatementFileType fileType) {
         super("UnSupported File Format !!! : " + fileType);
     } 
 

@@ -5,8 +5,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.rabobank.domain.Records;
 import com.rabobank.enums.StatementFileType;
-import com.rabobank.exception.FileTypeException;
+import com.rabobank.exception.FileFormatException;
 import com.rabobank.reader.StatementReader;
 import com.rabobank.writer.StatementWriter;
 
@@ -15,11 +16,11 @@ public class StatementFactory {
 
 	@Autowired
 	@Qualifier("csvreader")
-	StatementReader csvReader;
+	StatementReader<Records> csvReader;
 
 	@Autowired
 	@Qualifier("xmlreader")
-	StatementReader xmlReader;
+	StatementReader<Records> xmlReader;
 
 	@Autowired
 	@Qualifier("csvwriter")
@@ -29,7 +30,7 @@ public class StatementFactory {
 	@Qualifier("xmlwriter")
 	StatementWriter xmlwriter;
 
-	public StatementReader getFileReader(MultipartFile inputFile) {
+	public StatementReader<Records>  getFileReader(MultipartFile inputFile) {
 		StatementFileType fileType = StatementFileType.getFileType(inputFile.getOriginalFilename());
 		switch (fileType) {
 		case CSV:
@@ -37,7 +38,7 @@ public class StatementFactory {
 		case XML:
 			return xmlReader;
 		default:
-			throw new FileTypeException(fileType);
+			throw new FileFormatException(fileType);
 		}
 	}
 
@@ -49,7 +50,7 @@ public class StatementFactory {
 		case XML:
 			return xmlwriter;
 		default:
-			throw new FileTypeException(fileType);
+			throw new FileFormatException(fileType);
 		}
 	}
 

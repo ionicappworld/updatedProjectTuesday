@@ -3,7 +3,6 @@ package com.rabobank.reader.impl;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +28,7 @@ public class CSVStatementReaderImpl implements StatementReader<Records> {
 	@Override
 	public Records readStatement(MultipartFile file) {
 		List<Record> customerStatements = new ArrayList<>();
-		Records records;
+		Records records = new Records();
 
 		CSVParser parser;
 		try {
@@ -44,14 +43,15 @@ public class CSVStatementReaderImpl implements StatementReader<Records> {
 
 				customerStatements.add(customerRecords);
 			});
+			
+			records.setRecords(customerStatements);
 		}
 
 		catch (IOException e) {
 			logger.error("Exception on Reading CSV file " , e);
 		}
 
-		records = new Records();
-		records.setChildrecords(customerStatements);
+		
 		return records;
 
 	}

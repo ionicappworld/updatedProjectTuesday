@@ -17,22 +17,22 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Records {
 
 	@XmlElement(name = "record")
-	private List<Record> records;
+	private List<Record> record;
 
-	public Records(List<Record> records) {
+	public Records(List<Record> record) {
 		super();
-		this.records = records;
+		this.record = record;
 	}
 
 	public Records() {
 	}
 
 	public List<Record> getRecords() {
-		return records;
+		return record;
 	}
 
-	public void setChildrecords(List<Record> records) {
-		this.records = records;
+	public void setRecords(List<Record> record) {
+		this.record = record;
 	}
 
 }
